@@ -15,13 +15,13 @@
 				</excludes>
 			</resource>
 			<!-- This fire the bug -->
-			<resource>
-				<directory>src/main/resources/com/example/xml</directory>
-				<includes>
-					<include>**/*.xml</include>
-				</includes>
-				<targetPath>${project.build.directory}/com/example</targetPath>
-			</resource>
+<!-- 			<resource> -->
+<!-- 				<directory>src/main/resources/com/example/xml</directory> -->
+<!-- 				<includes> -->
+<!-- 					<include>**/*.xml</include> -->
+<!-- 				</includes> -->
+<!-- 				<targetPath>${project.build.directory}/com/example</targetPath> -->
+<!-- 			</resource> -->
 		</resources>
 		<plugins>
 			<plugin>
@@ -35,32 +35,32 @@
 				</configuration>
 			</plugin>
 			<!-- This is the workaround I found through https://stackoverflow.com/a/16375537/1784164 -->
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-resources-plugin</artifactId> -->
-<!-- 				<version>3.1.0</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>copy-xml</id> -->
-<!-- 						<phase>validate</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>copy-resources</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<outputDirectory>${project.build.directory}/classes/com/example</outputDirectory> -->
-<!-- 							<resources> -->
-<!-- 								<resource> -->
-<!-- 									<directory>src/main/resources/com/example/xml</directory> -->
-<!-- 									<includes> -->
-<!-- 										<include>**/*.xml</include> -->
-<!-- 									</includes> -->
-<!-- 									<targetPath>${project.build.directory}/com/example</targetPath> -->
-<!-- 								</resource> -->
-<!-- 							</resources> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>copy-xml</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/classes/com/example</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources/com/example/xml</directory>
+									<includes>
+										<include>**/*.xml</include>
+									</includes>
+									<targetPath>${project.build.directory}/com/example</targetPath>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
