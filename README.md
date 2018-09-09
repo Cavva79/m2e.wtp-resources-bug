@@ -7,3 +7,5 @@ I made 2 branches:
 
 - master: contains the code giving "Utility Facet configuration is aborted as the Java Configuration is inconsistent" as warning message on maven-m2e-jar
 - example_workaround: contains the example workaround that I think is best practice to use as separation between source folders and manipulation of source files
+
+The issue is apprearing when all 2 project war and jar are loaded as maven project on eclipse. Maven itself compile fine all projects.
