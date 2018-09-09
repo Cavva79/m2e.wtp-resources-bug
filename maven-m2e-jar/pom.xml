@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.example</groupId>
+	<artifactId>maven-m2e-jar</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources/</directory>
+				<excludes>
+					<exclude>**/*.xml</exclude>
+				</excludes>
+			</resource>
+			<!-- This fire the bug -->
+			<resource>
+				<directory>src/main/resources/com/example/xml</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+				<targetPath>${project.build.directory}/com/example</targetPath>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<!-- This is the workaround I found through https://stackoverflow.com/a/16375537/1784164 -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-resources-plugin</artifactId> -->
+<!-- 				<version>3.1.0</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>copy-xml</id> -->
+<!-- 						<phase>validate</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>copy-resources</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<outputDirectory>${project.build.directory}/classes/com/example</outputDirectory> -->
+<!-- 							<resources> -->
+<!-- 								<resource> -->
+<!-- 									<directory>src/main/resources/com/example/xml</directory> -->
+<!-- 									<includes> -->
+<!-- 										<include>**/*.xml</include> -->
+<!-- 									</includes> -->
+<!-- 									<targetPath>${project.build.directory}/com/example</targetPath> -->
+<!-- 								</resource> -->
+<!-- 							</resources> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
+		</plugins>
+	</build>
+</project>
